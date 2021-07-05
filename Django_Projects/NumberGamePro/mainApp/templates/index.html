@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container {
+        width: 970px;
+        min-height: 600px;
+        margin: 0 auto;
+        background-color:ivory;
+    }
+    h1{
+        text-align: center;
+    }
+    h3{
+        text-align: center;
+    }
+    .box{
+        text-align: center;
+        margin-top: 40px;
+    }
+    button{
+        text-align: center;
+    }
+    a{
+        text-align: center;
+        margin-top: 40px;
+        text-decoration: none;
+        border-radius: 15px;
+        color:blue;
+    }
+    #atag{
+        text-align: center;
+        margin-top: 40px;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    #toLow{
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        background-color:red;
+        margin: auto;
+    }
+    #tooHigh{
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        background-color: red;
+        margin: auto;
+    }
+    #correct{
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        background-color: lime;
+        margin: auto;
+    }
+</style>
+<body>
+    <div id="container">
+        <h1>Welcome to the great number game!</h1>
+        <h3>I am thinking of a number between 1 to 100</h3>
+        <h3>Take a guess!</h3>
+        {% if too_low %}
+        <div id="toLow" >
+            <h2>Too Low</h2>
+        </div>
+        {% endif %}
+        {% if too_high %}
+        <div id = "tooHigh" >
+            <h2>Too High</h2>
+        </div>
+        {% endif %}
+        {% if correct %}
+        <div id="correct">
+            <h2>YOU GOT IT!!!</h2>
+        </div>
+        {% endif %}
+        <form action="/guess" method="post">
+            {% csrf_token %}
+            <div class="box">
+                <input type="number" name="guess">
+            </div>
+            <div class="box">
+                <button>submit</button>
+            </div>
+            <div id="atag">
+                <a href="/delete">Click To play agian!</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
